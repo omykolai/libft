@@ -56,8 +56,14 @@ SRCS=ft_bzero.c\
 	 ft_lstdelone.c\
 	 ft_lstdel.c\
 	 ft_lstadd.c\
+	 ft_lstaddnew.c\
 	 ft_lstiter.c\
-	 ft_lstmap.c
+	 ft_lstmap.c\
+	 ft_itoa_base.c\
+	 ft_itoamax.c\
+	 ft_uitoamax.c\
+	 ft_wstrnew.c\
+	 ft_wstrlen.c
 OBJS=$(SRCS:%.c=%.o)
 
 .PHONY: all clean fclean re
