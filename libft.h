@@ -6,15 +6,15 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/09 16:55:56 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/09 18:14:52 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
-# include <stdint.h>
 # include <wchar.h>
+# include <stdint.h>
 
 typedef struct		s_list
 {
@@ -85,9 +85,10 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
-size_t				ft_wstrlen(const wchar_t *str, int is_byte_len);
+size_t				ft_wstrlen(const wchar_t *str, int by_char);
 wchar_t				*ft_wstrnew(size_t size);
-
+wchar_t				*ft_wstrcpy(wchar_t *dst, const wchar_t *src);
+wchar_t				*ft_wstrchr(const wchar_t *s, int c);
 char				*ft_itoamax(intmax_t n);
 char				*ft_uitoamax(uintmax_t n);
 char				*ft_itoa_base(uintmax_t n, char *base);
