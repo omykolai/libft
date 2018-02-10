@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/10 15:13:47 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/10 16:29:43 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,19 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
-t_list				*ft_lstnew(void const *value, size_t value_size);
+t_list				*ft_lstnew(void *value, size_t value_size);
+t_list				*ft_lstnewcopy(void const *value, size_t value_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+void				ft_lstdelnode(t_list **list, t_list *node,
+	void (*del)(void *, size_t));
+void				ft_lstdelval(t_list **list, void *val,
+	void (*del)(void *, size_t));
+void				ft_lstdel_first_match(t_list **list, void *val,
+	void (*del)(void *, size_t), int (*cmp)());
 
 size_t				ft_wstrlen(const wchar_t *str, int by_char);
 wchar_t				*ft_wstrnew(size_t size);

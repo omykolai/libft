@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel_first_match.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/10 16:26:57 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/10 16:29:21 by omykolai         ###   ########.fr       */
+/*   Created: 2018/02/10 15:55:16 by omykolai          #+#    #+#             */
+/*   Updated: 2018/02/10 16:32:55 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-t_list		*ft_lstnew(void *value, size_t value_size)
+void	ft_lstdel_first_match(t_list **list, void *val,
+	void (*del)(void *, size_t), int (*cmp)())
 {
-	t_list	*first;
+	t_list *cur;
 
-	if (!(first = (t_list*)malloc(sizeof(t_list))))
-		return (NULL);
-	first->value = value;
-	first->value_size = value == NULL ? 0 : value_size;
-	first->next = NULL;
-	return (first);
+	cur = *list;
+	if (cmp(cur->value, val) == 0)
+	{
+		*list = cur->next;
+		ft_lstdelone(&cur, del);
+	}
+	else
+	{
+		while (cur)
+		{
+			if (cmp(cur->next->value, val) == 0)
+			{
+				if (del)
+					del(cur->next->value, cur->next->value_size);
+				free(cur->next);
+				cur->next = cur->next->next;
+				return ;
+			}
+			cur = cur->next;
+		}
+	}
 }

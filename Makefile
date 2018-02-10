@@ -67,11 +67,15 @@ SRCS=ft_bzero.c\
 	 ft_putendl_fd.c\
 	 ft_putnbr_fd.c\
 	 ft_lstnew.c\
+	 ft_lstnewcopy.c\
 	 ft_lstdelone.c\
 	 ft_lstdel.c\
 	 ft_lstadd.c\
 	 ft_lstiter.c\
 	 ft_lstmap.c\
+	 ft_lstdelnode.c\
+	 ft_lstdelval.c\
+	 ft_lstdel_first_match.c\
 	 ft_itoa_base.c\
 	 ft_itoamax.c\
 	 ft_uitoamax.c\

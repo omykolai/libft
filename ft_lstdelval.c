@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelval.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/10 16:26:57 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/10 16:29:21 by omykolai         ###   ########.fr       */
+/*   Created: 2018/02/10 15:47:07 by omykolai          #+#    #+#             */
+/*   Updated: 2018/02/10 16:32:47 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-t_list		*ft_lstnew(void *value, size_t value_size)
+void	ft_lstdelval(t_list **list, void *val, void (*del)(void *, size_t))
 {
-	t_list	*first;
+	t_list *cur;
 
-	if (!(first = (t_list*)malloc(sizeof(t_list))))
-		return (NULL);
-	first->value = value;
-	first->value_size = value == NULL ? 0 : value_size;
-	first->next = NULL;
-	return (first);
+	cur = *list;
+	if (cur->value == val)
+	{
+		*list = cur->next;
+		ft_lstdelone(&cur, del);
+	}
+	else
+	{
+		while (cur)
+		{
+			if (cur->next->value == val)
+			{
+				if (del)
+					del(cur->next->value, cur->next->value_size);
+				free(cur->next);
+				cur->next = cur->next->next;
+				return ;
+			}
+			cur = cur->next;
+		}
+	}
 }
