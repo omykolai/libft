@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/09 18:14:52 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/10 14:44:30 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 typedef struct		s_list
 {
-	void			*content;
-	size_t			content_size;
+	void			*value;
+	size_t			value_size;
 	struct s_list	*next;
 }					t_list;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: omykolai <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/18 13:49:54 by omykolai          #+#    #+#             */
-/*   Updated: 2017/11/18 13:49:59 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/10 14:45:05 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@ static void	*get_copy(unsigned char *c, size_t size)
 	return ((void*)c_copy);
 }
 
-t_list		*ft_lstnew(void const *content, size_t content_size)
+t_list		*ft_lstnew(void const *value, size_t value_size)
 {
 	t_list	*first;
 
 	if (!(first = (t_list*)malloc(sizeof(t_list))))
 		return (NULL);
-	if (!content)
+	if (!value)
 	{
-		first->content = NULL;
-		first->content_size = 0;
+		first->value = NULL;
+		first->value_size = 0;
 	}
 	else
 	{
-		if (!(first->content = get_copy((unsigned char*)content, content_size)))
+		if (!(first->value = get_copy((unsigned char*)value, value_size)))
 			return (NULL);
-		first->content_size = content_size;
+		first->value_size = value_size;
 	}
 	first->next = NULL;
 	return (first);
