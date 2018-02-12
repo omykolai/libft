@@ -1,40 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelval.c                                     :+:      :+:    :+:   */
+/*   ft_qpushcopy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/10 15:47:07 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/10 17:14:26 by omykolai         ###   ########.fr       */
+/*   Created: 2018/02/12 18:14:25 by omykolai          #+#    #+#             */
+/*   Updated: 2018/02/12 18:15:04 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelval(t_list **list, void *val, void (*del)(void *, size_t))
+void	ft_qpushcopy(t_queue *q, void *val)
 {
-	t_list *cur;
-	t_list *tmp;
-
-	cur = *list;
-	if (cur->value == val)
-	{
-		*list = cur->next;
-		ft_lstdelone(&cur, del);
-	}
-	else
-	{
-		while (cur->next)
-		{
-			if (cur->next->value == val)
-			{
-				tmp = cur->next->next;
-				ft_lstdelone(&cur->next, del);
-				cur->next = tmp;
-				return ;
-			}
-			cur = cur->next;
-		}
-	}
+	ft_lstadd(&q->last, ft_lstnewcopy(val, sizeof(val)));
+	q->last = q->last->next;
 }

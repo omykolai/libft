@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/10 16:29:43 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/12 18:15:50 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ typedef struct		s_list
 	size_t			value_size;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_queue
+{
+	t_list			*first;
+	t_list			*last;
+}					t_queue;
 
 void				*ft_memset(void *b, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -91,6 +97,11 @@ void				ft_lstdelval(t_list **list, void *val,
 	void (*del)(void *, size_t));
 void				ft_lstdel_first_match(t_list **list, void *val,
 	void (*del)(void *, size_t), int (*cmp)());
+void				ft_lstprint(t_list *list, void (*lst_print)());
+
+void				ft_qpush(t_queue *q, void *val);
+void				ft_qpushcopy(t_queue *q, void *val);
+void				*ft_qpop(t_queue *q);
 
 size_t				ft_wstrlen(const wchar_t *str, int by_char);
 wchar_t				*ft_wstrnew(size_t size);

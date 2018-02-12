@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelval.c                                     :+:      :+:    :+:   */
+/*   ft_qpop.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/10 15:47:07 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/10 17:14:26 by omykolai         ###   ########.fr       */
+/*   Created: 2018/02/12 18:07:53 by omykolai          #+#    #+#             */
+/*   Updated: 2018/02/12 18:11:09 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_lstdelval(t_list **list, void *val, void (*del)(void *, size_t))
+void	*ft_qpop(t_queue *q)
 {
-	t_list *cur;
-	t_list *tmp;
+	void	*res;
+	t_list	*newfirst;
 
-	cur = *list;
-	if (cur->value == val)
-	{
-		*list = cur->next;
-		ft_lstdelone(&cur, del);
-	}
-	else
-	{
-		while (cur->next)
-		{
-			if (cur->next->value == val)
-			{
-				tmp = cur->next->next;
-				ft_lstdelone(&cur->next, del);
-				cur->next = tmp;
-				return ;
-			}
-			cur = cur->next;
-		}
-	}
+	res = q->first->value;
+	newfirst = q->first->next;
+	free(q->first);
+	q->first = newfirst;
+	return (res);
 }

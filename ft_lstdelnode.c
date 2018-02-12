@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 15:33:42 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/10 16:30:32 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/10 17:14:36 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_lstdelnode(t_list **list, t_list *node, void (*del)(void *, size_t))
 	}
 	else
 	{
-		while (cur)
+		while (cur->next)
 		{
 			if (cur->next == node)
 			{

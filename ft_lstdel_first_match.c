@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/10 15:55:16 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/10 16:32:55 by omykolai         ###   ########.fr       */
+/*   Created: 2018/02/10 17:09:00 by omykolai          #+#    #+#             */
+/*   Updated: 2018/02/10 17:17:09 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 void	ft_lstdel_first_match(t_list **list, void *val,
 	void (*del)(void *, size_t), int (*cmp)())
 {
 	t_list *cur;
+	t_list *tmp;
 
 	cur = *list;
 	if (cmp(cur->value, val) == 0)
@@ -26,14 +26,13 @@ void	ft_lstdel_first_match(t_list **list, void *val,
 	}
 	else
 	{
-		while (cur)
+		while (cur->next)
 		{
 			if (cmp(cur->next->value, val) == 0)
 			{
-				if (del)
-					del(cur->next->value, cur->next->value_size);
-				free(cur->next);
-				cur->next = cur->next->next;
+				tmp = cur->next->next;
+				ft_lstdelone(&cur->next, del);
+				cur->next = tmp;
 				return ;
 			}
 			cur = cur->next;
