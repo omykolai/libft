@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/12 18:15:50 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/12 19:02:13 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ void				ft_lstdel_first_match(t_list **list, void *val,
 	void (*del)(void *, size_t), int (*cmp)());
 void				ft_lstprint(t_list *list, void (*lst_print)());
 
+t_queue				*ft_qnew(void);
 void				ft_qpush(t_queue *q, void *val);
 void				ft_qpushcopy(t_queue *q, void *val);
 void				*ft_qpop(t_queue *q);

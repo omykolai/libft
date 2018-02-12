@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_qpop.c                                          :+:      :+:    :+:   */
+/*   ft_qnew.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 18:07:53 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/12 18:56:24 by omykolai         ###   ########.fr       */
+/*   Created: 2018/02/12 19:00:13 by omykolai          #+#    #+#             */
+/*   Updated: 2018/02/12 19:01:41 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void	*ft_qpop(t_queue *q)
+t_queue	*ft_qnew(void)
 {
-	void	*res;
-	t_list	*newfirst;
-
-	if (q->first)
-		return (NULL);
-	res = q->first->value;
-	newfirst = q->first->next;
-	if (newfirst == NULL)
-		q->last = NULL;
-	free(q->first);
-	q->first = newfirst;
-	return (res);
+	return (ft_memalloc(sizeof(t_queue)));
 }
