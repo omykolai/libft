@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_qpushcopy.c                                     :+:      :+:    :+:   */
+/*   ft_qpopnode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 18:14:25 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/14 19:13:27 by omykolai         ###   ########.fr       */
+/*   Created: 2018/02/14 19:08:59 by omykolai          #+#    #+#             */
+/*   Updated: 2018/02/14 19:10:35 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-void	ft_qpushcopy(t_queue *q, void *val, size_t val_size)
+t_list	*ft_qpopnode(t_queue *q)
 {
-	t_list	*new;
+	t_list	*res;
+	t_list	*newfirst;
 
-	new = NULL;
-	ft_lstadd(&new, ft_lstnewcopy(val, val_size));
-	if (q->last)
-		q->last->next = new;
-	q->last = new;
 	if (!q->first)
-		q->first = new;
+		return (NULL);
+	res = q->first;
+	newfirst = q->first->next;
+	if (newfirst == NULL)
+		q->last = NULL;
+	free(q->first);
+	q->first = newfirst;
+	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/12 19:02:13 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/14 19:31:17 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 char				*ft_itoa(int n);
+void				*ft_itov(int n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_putendl(char const *s);
@@ -100,9 +101,10 @@ void				ft_lstdel_first_match(t_list **list, void *val,
 void				ft_lstprint(t_list *list, void (*lst_print)());
 
 t_queue				*ft_qnew(void);
-void				ft_qpush(t_queue *q, void *val);
-void				ft_qpushcopy(t_queue *q, void *val);
+void				ft_qpush(t_queue *q, void *val, size_t val_size);
+void				ft_qpushcopy(t_queue *q, void *val, size_t val_size);
 void				*ft_qpop(t_queue *q);
+t_list				*ft_qpopnode(t_queue *q);
 
 size_t				ft_wstrlen(const wchar_t *str, int by_char);
 wchar_t				*ft_wstrnew(size_t size);

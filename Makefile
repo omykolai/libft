@@ -58,6 +58,7 @@ SRCS=ft_bzero.c\
 	 ft_strtrim.c\
 	 ft_strsplit.c\
 	 ft_itoa.c\
+	 ft_itov.c\
 	 ft_putchar.c\
 	 ft_putstr.c\
 	 ft_putendl.c\
@@ -81,6 +82,7 @@ SRCS=ft_bzero.c\
 	 ft_qpush.c\
 	 ft_qpushcopy.c\
 	 ft_qpop.c\
+	 ft_qpopnode.c\
 	 ft_itoa_base.c\
 	 ft_itoamax.c\
 	 ft_uitoamax.c\

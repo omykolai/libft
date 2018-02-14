@@ -6,18 +6,18 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:11:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/12 18:59:36 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/14 19:13:20 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_qpush(t_queue *q, void *val)
+void	ft_qpush(t_queue *q, void *val, size_t val_size)
 {
 	t_list	*new;
 
 	new = NULL;
-	ft_lstadd(&new, ft_lstnew(val, sizeof(val)));
+	ft_lstadd(&new, ft_lstnew(val, val_size));
 	if (q->last)
 		q->last->next = new;
 	q->last = new;
