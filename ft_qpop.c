@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:07:53 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/12 18:56:24 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/02/14 18:44:03 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_qpop(t_queue *q)
 	void	*res;
 	t_list	*newfirst;
 
-	if (q->first)
+	if (!q->first)
 		return (NULL);
 	res = q->first->value;
 	newfirst = q->first->next;
