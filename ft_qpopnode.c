@@ -24,7 +24,6 @@ t_list	*ft_qpopnode(t_queue *q)
 	newfirst = q->first->next;
 	if (newfirst == NULL)
 		q->last = NULL;
-	free(q->first);
 	q->first = newfirst;
 	return (res);
 }
