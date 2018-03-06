@@ -77,7 +77,6 @@ SRCS=ft_bzero.c\
 	 ft_lstdelnode.c\
 	 ft_lstdelval.c\
 	 ft_lstdel_first_match.c\
-	 ft_lstprint.c\
 	 ft_qnew.c\
 	 ft_qpush.c\
 	 ft_qpushcopy.c\
