@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 19:08:59 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/14 19:10:35 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/03/10 14:54:41 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ t_list	*ft_qpopnode(t_queue *q)
 	if (newfirst == NULL)
 		q->last = NULL;
 	q->first = newfirst;
+	--q->count;
 	return (res);
 }

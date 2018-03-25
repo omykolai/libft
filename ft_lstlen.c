@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_qpushcopy.c                                     :+:      :+:    :+:   */
+/*   ft_lstlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 18:14:25 by omykolai          #+#    #+#             */
-/*   Updated: 2018/03/10 14:55:04 by omykolai         ###   ########.fr       */
+/*   Created: 2018/03/10 14:01:01 by omykolai          #+#    #+#             */
+/*   Updated: 2018/03/10 14:01:59 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_qpushcopy(t_queue *q, void *val, size_t val_size)
+int		ft_lstlen(t_list *list)
 {
-	t_list	*new;
+	int	len;
 
-	new = NULL;
-	ft_lstadd(&new, ft_lstnewcopy(val, val_size));
-	if (q->last)
-		q->last->next = new;
-	q->last = new;
-	if (!q->first)
-		q->first = new;
-	++q->count;
+	len = 0;
+	while (list)
+	{
+		++len;
+		list = list->next;
+	}
+	return (len);
 }

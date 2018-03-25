@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 18:11:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/14 19:13:20 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/03/10 14:54:53 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ void	ft_qpush(t_queue *q, void *val, size_t val_size)
 	q->last = new;
 	if (!q->first)
 		q->first = new;
+	++q->count;
 }

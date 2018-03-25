@@ -6,7 +6,7 @@
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/30 14:45:22 by omykolai          #+#    #+#             */
-/*   Updated: 2018/02/14 19:31:17 by omykolai         ###   ########.fr       */
+/*   Updated: 2018/03/22 11:20:28 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_queue
 {
 	t_list			*first;
 	t_list			*last;
+	int				count;
 }					t_queue;
 
 void				*ft_memset(void *b, int c, size_t len);
@@ -90,6 +91,7 @@ t_list				*ft_lstnewcopy(void const *value, size_t value_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstadd_(t_list **alst, void *val);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstdelnode(t_list **list, t_list *node,
@@ -98,13 +100,24 @@ void				ft_lstdelval(t_list **list, void *val,
 	void (*del)(void *, size_t));
 void				ft_lstdel_first_match(t_list **list, void *val,
 	void (*del)(void *, size_t), int (*cmp)());
-void				ft_lstprint(t_list *list, void (*lst_print)());
+t_list				*ft_lstfind(t_list *list, void *value);
+t_list				*ft_lstfind_first_match(t_list *list, void *value,
+	int (*cmp)());
+t_list				*ft_lstdup(t_list *list);
+int					ft_lstlen(t_list *list);
+void				ft_lstaddsorted(t_list **alst, void *val, int (*cmp)());
+void				ft_lstappend(t_list **alst, t_list *range);
 
 t_queue				*ft_qnew(void);
 void				ft_qpush(t_queue *q, void *val, size_t val_size);
+void				ft_qpush_(t_queue *q, void *val);
 void				ft_qpushcopy(t_queue *q, void *val, size_t val_size);
 void				*ft_qpop(t_queue *q);
 t_list				*ft_qpopnode(t_queue *q);
+void				ft_qdestroy(t_queue *q, void (*del)(void *, size_t));
+t_queue				*ft_qdup(t_queue *q);
+void				ft_qaddrange(t_queue *q, t_list *range);
+t_queue				*ft_qsub(t_queue *q, t_list *end);
 
 size_t				ft_wstrlen(const wchar_t *str, int by_char);
 wchar_t				*ft_wstrnew(size_t size);
@@ -113,5 +126,7 @@ wchar_t				*ft_wstrchr(const wchar_t *s, int c);
 char				*ft_itoamax(intmax_t n);
 char				*ft_uitoamax(uintmax_t n);
 char				*ft_itoa_base(uintmax_t n, char *base);
+intmax_t			ft_atoimax(const char *str);
+int					ft_divceil(int n, int div);
 
 #endif

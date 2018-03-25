@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_qpushcopy.c                                     :+:      :+:    :+:   */
+/*   ft_lstdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 18:14:25 by omykolai          #+#    #+#             */
-/*   Updated: 2018/03/10 14:55:04 by omykolai         ###   ########.fr       */
+/*   Created: 2018/03/07 18:08:26 by omykolai          #+#    #+#             */
+/*   Updated: 2018/03/07 18:28:32 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_qpushcopy(t_queue *q, void *val, size_t val_size)
+t_list	*ft_lstdup(t_list *list)
 {
-	t_list	*new;
+	t_list	*copy;
+	t_list	**next;
 
-	new = NULL;
-	ft_lstadd(&new, ft_lstnewcopy(val, val_size));
-	if (q->last)
-		q->last->next = new;
-	q->last = new;
-	if (!q->first)
-		q->first = new;
-	++q->count;
+	if (!list)
+		return (NULL);
+	copy = ft_lstnew(list->value, list->value_size);
+	next = &copy->next;
+	while (list->next)
+	{
+		*next = ft_lstnew(list->next->value, list->next->value_size);
+		list = list->next;
+		next = &(*next)->next;
+	}
+	return (copy);
 }

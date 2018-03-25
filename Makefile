@@ -35,6 +35,7 @@ SRCS=ft_bzero.c\
 	 ft_strcmp.c\
 	 ft_strncmp.c\
 	 ft_atoi.c\
+	 ft_atoimax.c\
 	 ft_isalpha.c\
 	 ft_isdigit.c\
 	 ft_isalnum.c\
@@ -72,21 +73,34 @@ SRCS=ft_bzero.c\
 	 ft_lstdelone.c\
 	 ft_lstdel.c\
 	 ft_lstadd.c\
+	 ft_lstadd_.c\
 	 ft_lstiter.c\
 	 ft_lstmap.c\
 	 ft_lstdelnode.c\
 	 ft_lstdelval.c\
 	 ft_lstdel_first_match.c\
+	 ft_lstfind.c\
+	 ft_lstfind_first_match.c\
+	 ft_lstdup.c\
+	 ft_lstlen.c\
+	 ft_lstaddsorted.c\
+	 ft_lstappend.c\
 	 ft_qnew.c\
 	 ft_qpush.c\
+	 ft_qpush_.c\
 	 ft_qpushcopy.c\
 	 ft_qpop.c\
 	 ft_qpopnode.c\
+	 ft_qdestroy.c\
+	 ft_qdup.c\
+	 ft_qaddrange.c\
+	 ft_qsub.c\
 	 ft_itoa_base.c\
 	 ft_itoamax.c\
 	 ft_uitoamax.c\
 	 ft_wstrnew.c\
-	 ft_wstrlen.c
+	 ft_wstrlen.c\
+	 ft_divceil.c
 OBJS=$(SRCS:%.c=%.o)
 
 .PHONY: all clean fclean re

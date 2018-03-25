@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoimax.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/09/22 19:19:52 by omykolai          #+#    #+#             */
-/*   Updated: 2018/03/06 15:45:44 by omykolai         ###   ########.fr       */
+/*   Created: 2018/03/06 17:25:00 by omykolai          #+#    #+#             */
+/*   Updated: 2018/03/07 13:20:26 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_is_white_space(char c)
+#include <stdint.h>
+
+static int		ft_is_white_space(char c)
 {
 	if (c == ' ' ||
 		c == '\t' ||
@@ -23,7 +25,7 @@ static int	ft_is_white_space(char c)
 		return (0);
 }
 
-static int	ft_is_digit(char c)
+static int		ft_is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
@@ -31,34 +33,28 @@ static int	ft_is_digit(char c)
 		return (0);
 }
 
-static int	ft_parse_nbr(const char *str, int i, int sign)
+static intmax_t	ft_parse_nbr(const char *str, int i, int sign)
 {
-	long long	res;
+	intmax_t	res;
 
 	res = 0;
 	while (ft_is_digit(str[i]))
 	{
 		res *= 10;
-		if (res >= 922337203685477580 || (res == 922337203685477580
-			&& str[i] > '6'))
-			return (-1);
-		if (res <= -922337203685477580 || (res == -922337203685477580
-			&& str[i] > '7'))
-			return (0);
 		if (sign)
 			res -= str[i] - '0';
 		else
 			res += str[i] - '0';
 		++i;
 	}
-	return ((int)res);
+	return (res);
 }
 
-int			ft_atoi(const char *str)
+intmax_t		ft_atoimax(const char *str)
 {
-	int		i;
-	int		res;
-	int		cond;
+	int			i;
+	intmax_t	res;
+	int			cond;
 
 	i = 0;
 	res = 0;

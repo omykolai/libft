@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_qpushcopy.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 18:14:25 by omykolai          #+#    #+#             */
-/*   Updated: 2018/03/10 14:55:04 by omykolai         ###   ########.fr       */
+/*   Created: 2018/03/10 13:48:54 by omykolai          #+#    #+#             */
+/*   Updated: 2018/03/10 13:49:50 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_qpushcopy(t_queue *q, void *val, size_t val_size)
+void	ft_lstadd_(t_list **alst, void *val)
 {
-	t_list	*new;
-
-	new = NULL;
-	ft_lstadd(&new, ft_lstnewcopy(val, val_size));
-	if (q->last)
-		q->last->next = new;
-	q->last = new;
-	if (!q->first)
-		q->first = new;
-	++q->count;
+	ft_lstadd(alst, ft_lstnew(val, 0));
 }

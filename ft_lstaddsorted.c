@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_qpushcopy.c                                     :+:      :+:    :+:   */
+/*   ft_lstaddsorted.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: omykolai <omykolai@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 18:14:25 by omykolai          #+#    #+#             */
-/*   Updated: 2018/03/10 14:55:04 by omykolai         ###   ########.fr       */
+/*   Created: 2018/03/10 14:42:28 by omykolai          #+#    #+#             */
+/*   Updated: 2018/03/10 14:51:11 by omykolai         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_qpushcopy(t_queue *q, void *val, size_t val_size)
+void	ft_lstaddsorted(t_list **alst, void *val, int (*cmp)())
 {
+	t_list	*node;
 	t_list	*new;
 
-	new = NULL;
-	ft_lstadd(&new, ft_lstnewcopy(val, val_size));
-	if (q->last)
-		q->last->next = new;
-	q->last = new;
-	if (!q->first)
-		q->first = new;
-	++q->count;
+	if (!*alst || cmp((*alst)->value, val) >= 0)
+		ft_lstadd_(alst, val);
+	else
+	{
+		node = *alst;
+		while (node->next && cmp(node->next->value, val) < 0)
+			node = node->next;
+		new = ft_lstnew(val, 0);
+		new->next = node->next;
+		node->next = new;
+	}
 }
